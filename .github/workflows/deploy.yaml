@@ -15,9 +15,28 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          BRANCH: gh-pages
-          FOLDER: build
+          name: build
+          path: build/
+  deploy:
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+      # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          token: ${{ github.token }}
+          artifact_name: "build"
