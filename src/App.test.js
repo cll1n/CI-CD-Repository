@@ -17,6 +17,8 @@ describe("Calculator", () => {
     // Click Calculate button
     fireEvent.click(calculateButton);
 
+    // Elias
+
     // Check if the result is displayed correctly
     const resultLabel = screen.getByText("5");
     expect(resultLabel).toBeInTheDocument();
