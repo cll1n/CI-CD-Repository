@@ -13,7 +13,7 @@ function Calculator() {
     setNumber2(e.target.value);
   };
 
-  // pre
+
   const handleCalculate = () => {
     const sum = parseFloat(number1) + parseFloat(number2);
     setResult(sum);
