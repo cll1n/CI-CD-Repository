@@ -4,7 +4,7 @@ function Calculator() {
   const [number1, setNumber1] = useState("");
   const [number2, setNumber2] = useState("");
   const [result, setResult] = useState("");
-
+    //
   const handleNumber1Change = (e) => {
     setNumber1(e.target.value);
   };
