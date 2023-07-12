@@ -18,7 +18,7 @@ function Calculator() {
     const sum = parseFloat(number1) + parseFloat(number2);
     setResult(sum);
   };
-  //
+
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
